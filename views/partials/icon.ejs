@@ -1,0 +1,61 @@
+<%
+/*
+ * Inline SVG icon set.
+ *
+ * Replaces the Font Awesome CDN, which was a render-blocking stylesheet
+ * plus a webfont — roughly 100KB over two extra connections — fetched for
+ * the twenty-odd glyphs below.
+ *
+ * These are drawn here rather than copied from an icon library, so there is
+ * no third-party licence or attribution attached to them. The brand marks
+ * (whatsapp, microsoft, salesforce) are simplified, recognisable-in-context
+ * shapes, not the official trademarks; every one of them sits next to a
+ * text label and is aria-hidden. Swap in official brand SVGs if you would
+ * rather have the exact marks.
+ *
+ * Usage: include this partial with { name: 'whatsapp', cls: 'w-5 h-5' }.
+ * See any template for the exact tag syntax — it cannot be written out here,
+ * because EJS scans for a closing tag at the text level and would find one
+ * inside this comment and end the scriptlet early.
+ *
+ * Always pass both `name` and `cls` — EJS locals leak between includes, so
+ * an omitted value would silently inherit the previous one.
+ */
+var _cls = (typeof cls !== 'undefined' && cls) ? cls : 'w-4 h-4';
+var _stroke = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+var _fill = 'fill="currentColor"';
+%><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="<%= _cls %> shrink-0" aria-hidden="true" focusable="false"><%
+
+switch (name) {
+
+/* ---- interface ---- */
+case 'bars': %><g <%- _stroke %>><path d="M4 6h16M4 12h16M4 18h16"/></g><% break;
+case 'xmark': %><g <%- _stroke %>><path d="M6 6l12 12M18 6L6 18"/></g><% break;
+case 'chevron-down': %><g <%- _stroke %>><path d="M6 9l6 6 6-6"/></g><% break;
+case 'check': %><g <%- _stroke %>><path d="M20 6L9 17l-5-5"/></g><% break;
+case 'clock': %><g <%- _stroke %>><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g><% break;
+case 'envelope': %><g <%- _stroke %>><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></g><% break;
+case 'location-dot': %><g <%- _stroke %>><path d="M12 21.5s-7-6.4-7-11.5a7 7 0 1114 0c0 5.1-7 11.5-7 11.5z"/><circle cx="12" cy="10" r="2.5"/></g><% break;
+case 'shield-halved': %><g <%- _stroke %>><path d="M12 3l8 3v5.8c0 4.6-3.4 8.4-8 9.2-4.6-.8-8-4.6-8-9.2V6l8-3z"/><path d="M12 3v18"/></g><% break;
+case 'paper-plane': %><g <%- _stroke %>><path d="M21.5 2.5L2.5 9.8l8 3.2 3.2 8 7.8-18.5z"/><path d="M21.5 2.5l-11 10.5"/></g><% break;
+case 'triangle-exclamation': %><g <%- _stroke %>><path d="M12 3.5l9.3 16.2H2.7L12 3.5z"/><path d="M12 9.5v4.2"/><path d="M12 17.2h.01"/></g><% break;
+case 'circle-notch': %><g <%- _stroke %>><path d="M12 3a9 9 0 019 9"/><path d="M21 12a9 9 0 01-9 9" opacity=".35"/><path d="M12 21a9 9 0 01-9-9" opacity=".35"/><path d="M3 12a9 9 0 019-9" opacity=".35"/></g><% break;
+case 'comment-dots': %><g <%- _stroke %>><path d="M20.5 12.2a8 8 0 01-8 8H8.4L4 23.2v-4.9a8 8 0 1116.5-6.1z"/><circle cx="8.8" cy="12" r=".9" fill="currentColor" stroke="none"/><circle cx="12.3" cy="12" r=".9" fill="currentColor" stroke="none"/><circle cx="15.8" cy="12" r=".9" fill="currentColor" stroke="none"/></g><% break;
+
+/* ---- content ---- */
+case 'star': %><path <%- _fill %> d="M12 2.4l2.95 5.98 6.6.96-4.78 4.65 1.13 6.57L12 17.46l-5.9 3.1 1.13-6.57L2.45 9.34l6.6-.96z"/><% break;
+case 'rocket': %><g <%- _stroke %>><path d="M12 2.5c3.1 2.2 5 5.7 5 9.3l-2.6 2.9H9.6L7 11.8c0-3.6 1.9-7.1 5-9.3z"/><circle cx="12" cy="9.6" r="1.9"/><path d="M9.6 15.5l-2.4 1.9.6 3.3 2.6-1.9M14.4 15.5l2.4 1.9-.6 3.3-2.6-1.9"/></g><% break;
+case 'code': %><g <%- _stroke %>><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></g><% break;
+case 'cloud': %><g <%- _stroke %>><path d="M7.2 19a4.7 4.7 0 01-.4-9.4 6.2 6.2 0 0111.8 1.7A4 4 0 0117.6 19H7.2z"/></g><% break;
+case 'laptop-code': %><g <%- _stroke %>><rect x="4" y="4.5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/><path d="M10.4 8.4L8.4 10l2 1.6M13.6 8.4l2 1.6-2 1.6"/></g><% break;
+case 'mobile-screen': %><g <%- _stroke %>><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.8 18.5h2.4"/></g><% break;
+case 'arrows-spin': %><g <%- _stroke %>><path d="M20.4 12a8.4 8.4 0 01-13.9 6.3"/><path d="M3.6 12a8.4 8.4 0 0113.9-6.3"/><path d="M17.5 2.2v3.6h-3.6M6.5 21.8v-3.6h3.6"/></g><% break;
+
+/* ---- brand marks (simplified, decorative, always beside a text label) ---- */
+case 'whatsapp': %><path <%- _fill %> d="M12 2a9.9 9.9 0 00-8.5 15L2 22l5.2-1.4A9.9 9.9 0 1012 2zm0 1.9a8 8 0 11-4.2 14.8l-.3-.2-3 .8.8-3-.2-.3A8 8 0 0112 3.9zm-3.5 4c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.1l-.8 1c-.1.2-.3.2-.6.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.3 0-.4.1-.5l.5-.6.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.4-.6-.4z"/><% break;
+case 'microsoft': %><g <%- _fill %>><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></g><% break;
+case 'salesforce': %><path <%- _fill %> d="M9.8 5.5a3.7 3.7 0 016.2 1 4.3 4.3 0 015.9 4 4.3 4.3 0 01-4.3 4.3c-.3 0-.6 0-.9-.1a3.1 3.1 0 01-4.1 1.3 3.5 3.5 0 01-6.5-1.2 3.9 3.9 0 011.4-7.5c.8 0 1.6.2 2.3.7z"/><% break;
+
+default: %><circle cx="12" cy="12" r="9" <%- _stroke %>/><%
+}
+%></svg>

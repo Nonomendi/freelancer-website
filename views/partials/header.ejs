@@ -1,0 +1,61 @@
+<header class="bg-brand-dark/95 backdrop-blur-md text-white sticky top-0 z-50 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+
+        <a href="/" class="flex items-center space-x-2 shrink-0" aria-label="<%= site.brandName %><%= site.brandSuffix %> — home">
+            <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center font-heading font-bold text-xl text-white shadow-lg" aria-hidden="true">N</div>
+            <span class="font-heading font-bold text-xl tracking-tight"><%= site.brandName %><span class="text-brand-accent"><%= site.brandSuffix %></span></span>
+        </a>
+
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium" aria-label="Primary">
+            <% site.nav.forEach(function (item) { %>
+                <a href="<%= item.href %>"
+                   class="<%= activeNav === item.key ? 'text-brand-accent font-semibold' : 'text-slate-300 hover:text-white transition' %>"
+                   <%= activeNav === item.key ? 'aria-current="page"' : '' %>><%= item.label %></a>
+            <% }); %>
+        </nav>
+
+        <div class="flex items-center gap-2 shrink-0">
+            <a href="<%= site.whatsappLink("Hi Nolundi, I'd like to get a project quote.") %>"
+               target="_blank" rel="noopener"
+               class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-4 sm:px-5 py-2.5 rounded-lg shadow-md tracking-wide uppercase transition flex items-center gap-2">
+                <%- include('../partials/icon', { name: 'whatsapp', cls: 'w-4 h-4' }) %>
+                <span class="hidden sm:inline">WhatsApp Me</span>
+                <span class="sr-only sm:hidden">WhatsApp Me</span>
+            </a>
+
+            <button type="button"
+                    id="navToggle"
+                    class="md:hidden w-11 h-11 -mr-2 inline-flex items-center justify-center rounded-lg text-slate-200 hover:text-white hover:bg-slate-800 transition"
+                    aria-controls="mobileNav"
+                    aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <!-- Both icons are rendered; nav.js swaps which is hidden.
+                     (Previously this was one <i> whose Font Awesome classes
+                     were toggled — that no longer applies to inline SVG.) -->
+                <span data-nav-icon="closed"><%- include('../partials/icon', { name: 'bars', cls: 'w-5 h-5' }) %></span>
+                <span data-nav-icon="open" class="hidden"><%- include('../partials/icon', { name: 'xmark', cls: 'w-5 h-5' }) %></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile navigation. Hidden by default; toggled by /js/nav.js.
+         Kept in the DOM (not injected) so it works before JS parses. -->
+    <nav id="mobileNav"
+         class="md:hidden hidden border-t border-slate-800 bg-brand-dark"
+         aria-label="Mobile">
+        <ul class="px-4 py-3 space-y-1">
+            <% site.nav.forEach(function (item) { %>
+                <li>
+                    <a href="<%= item.href %>"
+                       class="block px-3 py-3 rounded-lg text-base font-medium <%= activeNav === item.key ? 'text-brand-accent bg-slate-800/60' : 'text-slate-300 hover:text-white hover:bg-slate-800/60' %> transition"
+                       <%= activeNav === item.key ? 'aria-current="page"' : '' %>><%= item.label %></a>
+                </li>
+            <% }); %>
+            <li class="pt-2 mt-2 border-t border-slate-800">
+                <a href="<%= site.emailLink %>" class="block px-3 py-3 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition">
+                    <%- include('../partials/icon', { name: 'envelope', cls: 'w-4 h-4 mr-2 text-brand-accent' }) %><%= site.email %>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

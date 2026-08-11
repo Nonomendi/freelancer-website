@@ -1,0 +1,40 @@
+<section id="faq" class="py-24 bg-white border-t border-slate-200">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center mb-14" data-reveal>
+            <span class="text-brand-primary font-bold text-xs uppercase tracking-widest">Questions</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Answered before you ask</h2>
+            <p class="text-slate-600 mt-3">The things people usually want to know before getting in touch.</p>
+        </div>
+
+        <div class="divide-y divide-slate-200 border-y border-slate-200">
+            <% faqs.forEach(function (item, i) { %>
+                <details class="group" data-reveal <%= i === 0 ? 'open' : '' %>>
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer list-none py-5 text-left">
+                        <h3 class="font-heading font-bold text-base sm:text-lg text-slate-900 group-hover:text-brand-primary transition"><%= item.q %></h3>
+                        <span class="shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center group-open:bg-brand-primary group-open:text-white transition" aria-hidden="true">
+                            <%- include('../partials/icon', { name: 'chevron-down', cls: 'w-3.5 h-3.5 transition-transform group-open:rotate-180' }) %>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 leading-relaxed pb-6 pr-12"><%= item.a %></p>
+                </details>
+            <% }); %>
+        </div>
+
+        <div class="mt-12 text-center" data-reveal>
+            <p class="text-slate-600">Still not sure? Ask the assistant in the corner, or just message me.</p>
+            <div class="mt-5 flex flex-wrap gap-3 justify-center">
+                <a href="/contact" class="bg-brand-primary hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-lg shadow-lg text-sm transition">
+                    Request a Quote
+                </a>
+                <a href="<%= site.whatsappLink('Hi Nolundi, I have a question about your services.') %>"
+                   target="_blank" rel="noopener"
+                   class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-7 py-3.5 rounded-lg text-sm transition inline-flex items-center gap-2">
+                    <%- include('../partials/icon', { name: 'whatsapp', cls: 'w-5 h-5' }) %> WhatsApp Me
+                </a>
+            </div>
+            <div class="mt-6 flex justify-center">
+                <%- include('trust') %>
+            </div>
+        </div>
+    </div>
+</section>

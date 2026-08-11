@@ -1,0 +1,59 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0F172A">
+
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<link rel="canonical" href="<%= canonical %>">
+<% if (typeof noindex !== 'undefined' && noindex) { %>
+<meta name="robots" content="noindex, follow">
+<% } %>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="<%= site.brandName %><%= site.brandSuffix %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:url" content="<%= canonical %>">
+<meta property="og:image" content="<%= site.baseUrl %>/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="<%= site.name %> — <%= site.role %>, <%= site.location %>">
+<meta property="og:locale" content="en_ZA">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= title %>">
+<meta name="twitter:description" content="<%= description %>">
+<meta name="twitter:image" content="<%= site.baseUrl %>/img/og-image.png">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+<!-- Fonts: preconnect first so the stylesheet request starts sooner. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Icons are inline SVG (views/partials/icon.ejs). The Font Awesome CDN
+     that used to sit here was a render-blocking stylesheet plus a webfont
+     on a third-party origin, fetched for about twenty glyphs. -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- Structured data: helps Google show the right business details. -->
+<script type="application/ld+json">
+<%- JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: site.name,
+  description: description,
+  url: site.baseUrl,
+  image: site.baseUrl + '/img/og-image.png',
+  email: site.email,
+  telephone: '+' + site.whatsappNumber,
+  areaServed: 'ZA',
+  address: { '@type': 'PostalAddress', addressLocality: 'Johannesburg', addressCountry: 'ZA' },
+  knowsAbout: ['Web Development', 'Salesforce', 'Apex', 'Lightning Web Components', 'React', 'Java', 'Python']
+}) %>
+</script>

@@ -1,0 +1,20 @@
+<!-- Extra bottom padding below md keeps the footer links clear of the
+     floating chat launcher, which sits in the same corner. -->
+<footer class="bg-brand-dark text-slate-400 pt-12 pb-24 md:pb-12 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <span class="font-heading font-bold text-lg text-white"><%= site.brandName %><span class="text-brand-accent"><%= site.brandSuffix %></span></span>
+
+        <!-- py-2 on the links keeps each tap target at least 24px tall
+             (WCAG 2.5.8); the -my-2 stops that padding changing the layout. -->
+        <nav class="flex space-x-6 -my-2" aria-label="Footer">
+            <% site.footerNav.forEach(function (item) { %>
+                <a href="<%= item.href %>" class="inline-block py-2 hover:text-white transition"><%= item.label %></a>
+            <% }); %>
+        </nav>
+
+        <div class="text-center md:text-right">
+            <p>Email: <a href="<%= site.emailLink %>" class="inline-block py-1.5 text-slate-300 hover:text-white underline"><%= site.email %></a></p>
+            <p class="text-slate-500 mt-1">&copy; <%= new Date().getFullYear() %> <%= site.name %>. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

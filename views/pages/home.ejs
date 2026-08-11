@@ -1,0 +1,184 @@
+<!-- HERO SECTION -->
+<section class="bg-brand-dark text-white py-20 lg:py-28 px-4 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+            <span class="inline-block bg-blue-900/50 text-blue-300 border border-blue-700/50 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                Full Stack &amp; Salesforce Freelance Developer
+            </span>
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">
+                I build real products with care &amp; craft.
+            </h1>
+            <p class="text-slate-300 text-lg leading-relaxed font-light max-w-2xl">
+                Based in Johannesburg, trained via WeThinkCode_. Get dedicated, direct attention on your project across the stack—React, Angular, Java, Python, and Salesforce customization (Apex, LWC).
+            </p>
+            <div class="pt-4 flex flex-wrap gap-4">
+                <a href="/contact" class="bg-brand-primary hover:bg-blue-600 text-white font-bold px-7 py-3.5 rounded-lg shadow-lg hover:shadow-blue-900/40 text-sm transition flex items-center gap-2">
+                    Request Clear Quote
+                </a>
+                <a href="<%= site.whatsappLink('Hi Nolundi, I have a project question.') %>" target="_blank" rel="noopener" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-7 py-3.5 rounded-lg text-sm transition flex items-center gap-2">
+                    <%- include('../partials/icon', { name: 'whatsapp', cls: 'w-5 h-5' }) %> Chat on WhatsApp
+                </a>
+            </div>
+
+            <!-- Trust signals sit directly under the primary CTA. -->
+            <div class="pt-2">
+                <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-400">
+                    <% if (site.trust.responseTime) { %>
+                        <li class="flex items-center gap-1.5"><%- include('../partials/icon', { name: 'clock', cls: 'w-4 h-4 text-brand-accent' }) %><%= site.trust.responseTime %></li>
+                    <% } %>
+                    <li class="flex items-center gap-1.5"><%- include('../partials/icon', { name: 'shield-halved', cls: 'w-4 h-4 text-emerald-400' }) %><%= site.trust.noPayment %></li>
+                    <li class="flex items-center gap-1.5"><%- include('../partials/icon', { name: 'location-dot', cls: 'w-4 h-4 text-brand-accent' }) %><%= site.trust.location %></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Profile Badge with Image -->
+        <div class="lg:col-span-5">
+            <div class="bg-brand-navy p-8 rounded-2xl border border-slate-700 shadow-2xl relative">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="relative shrink-0">
+                        <!-- Modern formats first; 201KB original replaced by a
+                             2.5KB AVIF. Explicit dimensions prevent layout shift. -->
+                        <picture>
+                            <source type="image/avif" srcset="/img/profile-128.avif 1x, /img/profile-256.avif 2x">
+                            <source type="image/webp" srcset="/img/profile-128.webp 1x, /img/profile-256.webp 2x">
+                            <img src="/img/profile-128.jpg"
+                                 srcset="/img/profile-128.jpg 1x, /img/profile-256.jpg 2x"
+                                 alt="<%= site.name %>, <%= site.role %>"
+                                 width="64" height="64" fetchpriority="high" decoding="async"
+                                 class="w-16 h-16 rounded-full object-cover border-2 border-brand-accent shadow-md">
+                        </picture>
+                        <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-brand-navy rounded-full" aria-hidden="true"></span>
+                    </div>
+                    <div class="min-w-0">
+                        <h2 class="font-heading font-bold text-lg text-white"><%= site.name %></h2>
+                        <p class="text-sm text-brand-accent"><%= site.role %></p>
+                    </div>
+                </div>
+
+                <h3 class="text-[11px] uppercase font-bold text-slate-400 tracking-widest mb-4">Certifications</h3>
+                <ul class="grid grid-cols-2 gap-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><%- include('../partials/icon', { name: 'microsoft', cls: 'w-4 h-4 text-blue-400' }) %> Azure Fundamentals</li>
+                    <li class="flex items-center gap-2"><%- include('../partials/icon', { name: 'cloud', cls: 'w-4 h-4 text-sky-400' }) %> Agentforce Certified</li>
+                    <li class="flex items-center gap-2"><%- include('../partials/icon', { name: 'code', cls: 'w-4 h-4 text-emerald-400' }) %> WeThinkCode_ Trained</li>
+                    <li class="flex items-center gap-2"><%- include('../partials/icon', { name: 'arrows-spin', cls: 'w-4 h-4 text-purple-400' }) %> Flowgear Certified</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services" class="py-24 max-w-7xl mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+        <span class="text-brand-primary font-bold text-xs uppercase tracking-widest">Services Offered</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Crafted With Care</h2>
+        <p class="text-slate-600 mt-3">Clear pricing ranges based on project scope, with dedicated focus from Johannesburg.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <% serviceGroups.forEach(function (group) { %>
+            <% var isDark = group.theme === 'dark'; %>
+            <div class="<%= isDark ? 'bg-brand-navy border-slate-700 text-slate-100' : 'bg-white border-slate-200' %> p-8 rounded-2xl border shadow-sm hover:shadow-xl hover:-translate-y-1 motion-reduce:hover:translate-y-0 transition duration-300 flex flex-col justify-between"
+                 data-reveal>
+                <div>
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-2xl <%= isDark ? 'bg-brand-primary text-white shadow-lg' : (group.accent === 'accent' ? 'bg-sky-100 text-brand-accent shadow-inner' : 'bg-blue-100 text-brand-primary shadow-inner') %>" aria-hidden="true">
+                        <% if (group.icon === 'laptop-code') { %><%- include('../partials/icon', { name: 'laptop-code', cls: 'w-7 h-7' }) %>
+                        <% } else if (group.icon === 'mobile-screen') { %><%- include('../partials/icon', { name: 'mobile-screen', cls: 'w-7 h-7' }) %>
+                        <% } else { %><%- include('../partials/icon', { name: 'salesforce', cls: 'w-7 h-7' }) %><% } %>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-2xl <%= isDark ? 'text-white' : 'text-slate-900' %> mb-6 border-l-4 <%= group.accent === 'accent' ? 'border-brand-accent' : 'border-brand-primary' %> pl-4"><%= group.title %></h3>
+
+                    <div class="space-y-5 text-sm <%= isDark ? 'text-slate-200' : 'text-slate-700' %>">
+                        <% group.items.forEach(function (item, i) { %>
+                            <div class="flex justify-between items-start gap-4 <%= i > 0 ? (isDark ? 'border-t border-slate-700 pt-5' : 'border-t border-slate-100 pt-5') : '' %>">
+                                <div>
+                                    <p class="font-semibold <%= isDark ? 'text-white' : 'text-slate-900' %>"><%= item.name %></p>
+                                    <% if (item.blurb) { %>
+                                        <p class="text-sm <%= isDark ? 'text-slate-400' : 'text-slate-600' %> mt-0.5 leading-snug"><%= item.blurb %></p>
+                                    <% } %>
+                                </div>
+                                <p class="font-bold <%= group.accent === 'accent' ? 'text-brand-accent' : 'text-brand-primary' %> text-sm whitespace-nowrap"><%= item.price %></p>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <div class="text-center mt-14" data-reveal>
+        <a href="/services" class="inline-block px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg text-sm transition">
+            View Full Services &amp; Maintenance Tiers
+        </a>
+    </div>
+</section>
+
+<!-- HOW IT WORKS SECTION -->
+<section id="how-it-works" class="py-24 bg-brand-light border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+            <span class="text-brand-primary font-bold text-xs uppercase tracking-widest">Process</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Simple &amp; Straightforward</h2>
+            <p class="text-slate-600 mt-3">Clear collaboration from concept to launch.</p>
+        </div>
+
+        <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <% steps.forEach(function (step) { %>
+                <li class="bg-white p-7 rounded-2xl border border-slate-200 text-center shadow-sm hover:shadow-md transition" data-reveal>
+                    <div class="w-10 h-10 <%= step.step === 'launch' ? 'bg-emerald-600' : 'bg-brand-primary' %> text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-sm" aria-hidden="true">
+                        <% if (step.step === 'launch') { %><%- include('../partials/icon', { name: 'rocket', cls: 'w-4 h-4' }) %><% } else { %><%= step.step %><% } %>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-slate-900 mb-2"><%= step.title %></h3>
+                    <p class="text-slate-600 text-sm leading-relaxed"><%= step.body %></p>
+                </li>
+            <% }); %>
+        </ol>
+    </div>
+</section>
+
+<!-- PORTFOLIO / DEMO PROJECTS SECTION -->
+<section id="work" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+            <span class="text-brand-primary font-bold text-xs uppercase tracking-widest">Live Demos</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mt-2">See What Your Site Could Look Like</h2>
+            <p class="text-slate-600 mt-3">Interactive previews built specifically to demonstrate real conversion-focused design.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <% portfolio.forEach(function (demo) { %>
+                <article class="group bg-brand-light rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 motion-reduce:hover:translate-y-0 transition duration-300 flex flex-col justify-between"
+                         data-reveal>
+                    <div>
+                        <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden border-b border-slate-200">
+                            <img src="<%= demo.preview %>"
+                                 alt="<%= demo.previewIsPlaceholder ? 'Placeholder graphic — a real screenshot of the ' + demo.title + ' demo has not been added yet' : 'Screenshot of the ' + demo.title + ' demo site' %>"
+                                 width="640" height="400" loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover object-top group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 transition duration-500">
+                            <% if (demo.previewIsPlaceholder) { %>
+                                <span class="absolute top-3 left-3 text-[10px] font-bold tracking-wider uppercase bg-amber-400 text-amber-950 px-2 py-1 rounded">Placeholder</span>
+                            <% } %>
+                        </div>
+
+                        <div class="p-6">
+                            <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full <%= demo.categoryClass %>"><%= demo.category %></span>
+                            <h3 class="font-heading font-bold text-xl text-slate-900 mt-3"><%= demo.title %></h3>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed"><%= demo.blurb %></p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="<%= demo.url %>" target="_blank" rel="noopener"
+                           class="block text-center w-full py-3 bg-slate-900 hover:bg-brand-primary text-white font-bold text-xs rounded-lg transition">
+                            Launch Live Preview <span aria-hidden="true">&#8599;</span><span class="sr-only">(opens in a new tab)</span>
+                        </a>
+                    </div>
+                </article>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/testimonials') %>
+<%- include('../partials/faq') %>

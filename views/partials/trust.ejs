@@ -1,0 +1,13 @@
+<ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600">
+    <% if (site.trust.responseTime) { %>
+        <li class="flex items-center gap-1.5">
+            <%- include('../partials/icon', { name: 'clock', cls: 'w-4 h-4 text-brand-primary' }) %><%= site.trust.responseTime %>
+        </li>
+    <% } %>
+    <li class="flex items-center gap-1.5">
+        <%- include('../partials/icon', { name: 'shield-halved', cls: 'w-4 h-4 text-emerald-600' }) %><%= site.trust.noPayment %>
+    </li>
+    <li class="flex items-center gap-1.5">
+        <%- include('../partials/icon', { name: 'location-dot', cls: 'w-4 h-4 text-brand-accent' }) %><%= site.trust.location %>
+    </li>
+</ul>

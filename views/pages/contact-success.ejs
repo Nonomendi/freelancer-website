@@ -1,0 +1,32 @@
+<section class="py-24 px-4">
+    <div class="max-w-xl mx-auto text-center">
+        <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-6 text-2xl" aria-hidden="true">
+            <%- include('../partials/icon', { name: 'check', cls: 'w-8 h-8' }) %>
+        </div>
+
+        <span class="text-brand-primary font-bold text-xs uppercase tracking-widest">Enquiry received</span>
+        <h1 class="font-heading text-4xl font-extrabold text-slate-900 mt-2">Thanks — that's come through</h1>
+        <p class="text-slate-600 mt-4 leading-relaxed">
+            I've got your details and I'll reply to the email address you gave me.
+            A confirmation is on its way to your inbox — if it isn't there in a
+            few minutes, check your spam folder.
+        </p>
+
+        <div class="mt-8 p-5 bg-white border border-slate-200 rounded-2xl text-left">
+            <p class="text-sm font-bold text-slate-900">Need me sooner?</p>
+            <p class="text-sm text-slate-600 mt-1">
+                WhatsApp is the fastest way to reach me directly.
+            </p>
+            <a href="<%= site.whatsappLink('Hi Nolundi, I just submitted an enquiry on your site.') %>"
+               target="_blank" rel="noopener"
+               class="mt-4 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-lg text-sm transition">
+                <%- include('../partials/icon', { name: 'whatsapp', cls: 'w-5 h-5' }) %> Chat on WhatsApp
+            </a>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-4 justify-center">
+            <a href="/" class="text-sm font-semibold text-slate-700 hover:text-brand-primary underline">Back to Home</a>
+            <a href="/services" class="text-sm font-semibold text-slate-700 hover:text-brand-primary underline">Services &amp; Pricing</a>
+        </div>
+    </div>
+</section>

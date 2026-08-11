@@ -1,0 +1,79 @@
+<!-- AI assistant. Minimised by default; state lives in the tab only. -->
+<div id="chatWidget"
+     class="fixed bottom-5 right-5 z-40 print:hidden"
+     data-greeting="<%= chat.GREETING %>">
+
+    <!-- Launcher -->
+    <button type="button"
+            id="chatLauncher"
+            class="relative w-14 h-14 rounded-full bg-brand-primary hover:bg-blue-700 text-white shadow-xl flex items-center justify-center transition hover:scale-105 motion-reduce:hover:scale-100"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="chatPanel">
+        <span class="sr-only">Open chat with Nolundi's assistant</span>
+        <%- include('../partials/icon', { name: 'comment-dots', cls: 'w-6 h-6' }) %>
+        <!-- Unread-style dot, hidden once the panel has been opened. -->
+        <span id="chatUnread"
+              class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"
+              aria-hidden="true"></span>
+    </button>
+
+    <!-- Panel -->
+    <div id="chatPanel"
+         role="dialog"
+         aria-modal="false"
+         aria-labelledby="chatTitle"
+         class="hidden absolute bottom-0 right-0 w-[min(23rem,calc(100vw-2.5rem))] h-[min(31rem,calc(100vh-7rem))] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden">
+
+        <!-- Header -->
+        <div class="bg-brand-dark text-white px-4 py-3 flex items-center justify-between shrink-0">
+            <div class="flex items-center gap-2.5 min-w-0">
+                <div class="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center font-heading font-bold text-sm shrink-0" aria-hidden="true">N</div>
+                <div class="min-w-0">
+                    <p id="chatTitle" class="font-heading font-bold text-sm leading-tight truncate">Ask about my services</p>
+                    <p class="text-[11px] text-slate-400 leading-tight">AI assistant — replies instantly</p>
+                </div>
+            </div>
+            <button type="button" id="chatClose"
+                    class="w-8 h-8 rounded-lg text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center transition shrink-0">
+                <span class="sr-only">Close chat</span>
+                <%- include('../partials/icon', { name: 'xmark', cls: 'w-5 h-5' }) %>
+            </button>
+        </div>
+
+        <!-- Transcript -->
+        <div id="chatLog"
+             class="flex-1 overflow-y-auto px-4 py-4 space-y-3 text-sm bg-brand-light"
+             role="log"
+             aria-live="polite"
+             aria-relevant="additions text"></div>
+
+        <!-- Suggested openers, removed after first use. -->
+        <div id="chatSuggestions" class="px-4 pb-2 flex flex-wrap gap-2 bg-brand-light shrink-0">
+            <% chat.SUGGESTIONS.forEach(function (s) { %>
+                <button type="button" class="chat-suggestion text-xs px-3 py-1.5 rounded-full border border-slate-300 bg-white text-slate-700 hover:border-brand-primary hover:text-brand-primary transition"><%= s %></button>
+            <% }); %>
+        </div>
+
+        <!-- Composer -->
+        <form id="chatForm" class="border-t border-slate-200 p-3 flex items-end gap-2 bg-white shrink-0">
+            <label for="chatInput" class="sr-only">Your message</label>
+            <textarea id="chatInput"
+                      rows="1"
+                      maxlength="<%= chat.LIMITS.maxMessageLength %>"
+                      placeholder="Ask about pricing, timing…"
+                      class="flex-1 resize-none max-h-24 px-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-brand-primary"></textarea>
+            <button type="submit" id="chatSend"
+                    class="w-10 h-10 rounded-lg bg-brand-primary hover:bg-blue-700 disabled:bg-slate-300 text-white flex items-center justify-center transition shrink-0">
+                <span class="sr-only">Send message</span>
+                <%- include('../partials/icon', { name: 'paper-plane', cls: 'w-4 h-4' }) %>
+            </button>
+        </form>
+
+        <p class="px-4 pb-3 text-[10px] text-slate-400 bg-white shrink-0 leading-snug">
+            Automated assistant — it can be wrong. Prices and timing are confirmed by Nolundi in writing.
+        </p>
+    </div>
+</div>
+
+<script src="/js/chat.js" defer></script>

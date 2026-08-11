@@ -1,0 +1,50 @@
+<section id="testimonials" class="py-24 bg-brand-light border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+            <span class="text-brand-primary font-bold text-xs uppercase tracking-widest">In their words</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mt-2">What clients say</h2>
+
+            <% if (testimonialsArePlaceholder()) { %>
+                <!-- Visible to Nolundi in dev and, deliberately, to anyone who
+                     views the site before real quotes are added. This is meant
+                     to be impossible to miss. -->
+                <p class="mt-5 inline-flex items-start gap-2 text-left text-sm bg-amber-50 border border-amber-300 text-amber-900 rounded-xl px-4 py-3">
+                    <%- include('../partials/icon', { name: 'triangle-exclamation', cls: 'w-4 h-4 mt-0.5' }) %>
+                    <span><strong>Placeholder section.</strong> These are not real quotes from real clients. Replace them in <code class="font-mono text-xs">config/content.js</code>, or delete this section, before the site goes live.</span>
+                </p>
+            <% } else { %>
+                <p class="text-slate-600 mt-3">Feedback from businesses I've built for.</p>
+            <% } %>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <% testimonials.forEach(function (t) { %>
+                <figure class="bg-white rounded-2xl border p-7 flex flex-col justify-between <%= t.placeholder ? 'border-dashed border-slate-300' : 'border-slate-200 shadow-sm' %>"
+                        data-reveal>
+                    <div>
+                        <div class="flex gap-0.5 <%= t.placeholder ? 'text-slate-300' : 'text-amber-400' %> mb-4" aria-hidden="true">
+                            <%- include('../partials/icon', { name: 'star', cls: 'w-3.5 h-3.5' }) %>
+                            <%- include('../partials/icon', { name: 'star', cls: 'w-3.5 h-3.5' }) %>
+                            <%- include('../partials/icon', { name: 'star', cls: 'w-3.5 h-3.5' }) %>
+                            <%- include('../partials/icon', { name: 'star', cls: 'w-3.5 h-3.5' }) %>
+                            <%- include('../partials/icon', { name: 'star', cls: 'w-3.5 h-3.5' }) %>
+                        </div>
+                        <blockquote class="<%= t.placeholder ? 'text-slate-400 italic' : 'text-slate-700' %> leading-relaxed">
+                            <%= t.placeholder ? t.quote : '“' + t.quote + '”' %>
+                        </blockquote>
+                    </div>
+
+                    <figcaption class="mt-6 pt-5 border-t <%= t.placeholder ? 'border-slate-200' : 'border-slate-100' %> flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-heading font-bold <%= t.placeholder ? 'bg-slate-100 text-slate-400' : 'bg-brand-primary text-white' %>" aria-hidden="true">
+                            <%= t.placeholder ? '?' : t.name.trim().charAt(0) %>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-semibold text-sm <%= t.placeholder ? 'text-slate-400' : 'text-slate-900' %> truncate"><%= t.name %></p>
+                            <p class="text-xs <%= t.placeholder ? 'text-slate-400' : 'text-slate-600' %> truncate"><%= t.role %></p>
+                        </div>
+                    </figcaption>
+                </figure>
+            <% }); %>
+        </div>
+    </div>
+</section>

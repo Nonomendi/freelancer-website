@@ -1,0 +1,17 @@
+<section class="py-24 px-4">
+    <div class="max-w-xl mx-auto text-center">
+        <span class="text-brand-primary font-bold text-xs uppercase tracking-widest">Error 500</span>
+        <h1 class="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">Something went wrong</h1>
+        <p class="text-slate-600 mt-4">
+            That's on my side, not yours. If you were trying to reach me, WhatsApp
+            <a href="<%= site.whatsappLink('Hi Nolundi, your site threw an error but I would like to get in touch.') %>" target="_blank" rel="noopener" class="text-brand-primary font-semibold underline"><%= site.whatsappDisplay %></a>
+            or email <a href="<%= site.emailLink %>" class="text-brand-primary font-semibold underline"><%= site.email %></a> still works.
+        </p>
+
+        <div class="mt-10">
+            <a href="/" class="inline-block bg-brand-primary hover:bg-blue-600 text-white font-bold px-7 py-3.5 rounded-lg shadow-lg text-sm transition">
+                Back to Home
+            </a>
+        </div>
+    </div>
+</section>

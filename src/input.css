@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Visible focus for keyboard users on every interactive element.
+     Accessibility requirement — do not remove without a replacement. */
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.accent');
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Anchor links land below the sticky 5rem header instead of under it. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  /* Respect a reduced-motion preference everywhere, including the chat
+     typing indicator. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Scroll reveal.
+     The hidden state is applied by JS (adding .reveal-ready) rather than
+     living in the markup, so with JS disabled — or before the script runs —
+     content is simply visible. Nothing is ever hidden with no way back. */
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+  }
+
+  /* An animation rather than a transition on purpose. Most of these cards
+     already carry Tailwind's `transition` class for their hover states; a
+     competing `transition` declaration here would override it and kill the
+     hover animation. Keyframes do not interfere. */
+  .reveal-ready [data-reveal].is-visible {
+    animation: reveal-in 0.5s ease-out forwards;
+  }
+
+  @keyframes reveal-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Reduced motion: content still appears, it just does not travel.
+     (reveal.js also bails out entirely — this is the belt to that braces.) */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-ready [data-reveal],
+    .reveal-ready [data-reveal].is-visible {
+      opacity: 1;
+      animation: none;
+      transform: none;
+    }
+  }
+
+  /* Skip link: hidden until focused, then pinned to the top-left. */
+  .skip-link {
+    @apply sr-only;
+  }
+
+  .skip-link:focus {
+    @apply not-sr-only fixed top-3 left-3 z-[100] rounded-lg bg-white px-4 py-2 text-sm font-semibold text-brand-dark shadow-lg;
+  }
+}
