@@ -181,7 +181,7 @@ const portfolio = [
     title: 'Plumbing & Emergency Services',
     blurb:
       'Built for quick service dispatching, customer reviews, and urgent lead capture.',
-    url: 'https://local-plumbing-landing-page-f0ssd96he-nonomendis-projects.vercel.app/#testimonials',
+    url: 'https://corporate-consultancy-demo.vercel.app/',
     urlIsStable: false,
     preview: '/img/preview-plumbing.svg',
     previewIsPlaceholder: true
@@ -193,7 +193,7 @@ const portfolio = [
     title: 'Aura Salon & Spa',
     blurb:
       'Luxury visual design, service price menus, and easy online appointment booking.',
-    url: 'https://salon-landing-page-demo-ayw58w4yr-nonomendis-projects.vercel.app/index.html',
+    url: 'https://salon-landing-page-demo.vercel.app/',
     urlIsStable: false,
     preview: '/img/preview-salon.svg',
     previewIsPlaceholder: true
@@ -205,7 +205,7 @@ const portfolio = [
     title: 'Apex Advisory Consultancy',
     blurb:
       'Multi-page corporate site with consultation contact forms and structured services.',
-    url: 'https://corporate-consultancy-demo-obw6on1cg-nonomendis-projects.vercel.app/contact',
+    url: 'https://corporate-consultancy-demo.vercel.app/',
     urlIsStable: false,
     preview: '/img/preview-corporate.svg',
     previewIsPlaceholder: true
