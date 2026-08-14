@@ -181,7 +181,7 @@ const portfolio = [
     title: 'Plumbing & Emergency Services',
     blurb:
       'Built for quick service dispatching, customer reviews, and urgent lead capture.',
-    url: 'https://corporate-consultancy-demo.vercel.app/',
+    url: 'https://local-plumbing-landing-page.vercel.app/',
     urlIsStable: false,
     preview: '/img/preview-plumbing.svg',
     previewIsPlaceholder: true
