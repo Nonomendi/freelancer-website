@@ -1,23 +1,16 @@
 /**
- * EVERY price, tier and turnaround on
- * the site lives in this file.
+ * EVERY price, tier and turnaround on the site lives in this file.
  *
- * To change pricing, edit here – the
- * homepage cards, the services page,
- * the contact form dropdown and the AI
- * assistant's system prompt all read
- * from this object. Do not hardcode a
- * price in a template.
+ * To change pricing, edit here — the homepage cards, the services page,
+ * the contact form dropdown and the AI assistant's system prompt all read
+ * from this object. Do not hardcode a price in a template.
  *
- * Prices are stored as display strings
- * (not numbers) because they are
- * ranges – "R1,990 – R3,500", "R35,000+"
- * – and must render exactly as
+ * Prices are stored as display strings (not numbers) because they are
+ * ranges — "R1,990 – R3,500", "R35,000+" — and must render exactly as
  * written.
  */
 
-/** Homepage "Crafted With Care" cards.
- */
+/** Homepage "Crafted With Care" cards. */
 const serviceGroups = [
   {
     id: 'websites',
@@ -29,17 +22,17 @@ const serviceGroups = [
       {
         name: 'Landing Page',
         blurb: 'Single campaign page, form & info',
-        price: 'R1,990 - R3,500'
+        price: 'R1,990 – R3,500'
       },
       {
         name: 'Starter (3-5 Pages)',
         blurb: 'Home, About, Services, Contact',
-        price: 'R3,500 - R6,500'
+        price: 'R3,500 – R6,500'
       },
       {
         name: 'E-Commerce Store',
         blurb: 'Catalogs, payments, shipping',
-        price: 'R7,500 - R25,000+'
+        price: 'R7,500 – R25,000+'
       }
     ]
   },
@@ -53,7 +46,7 @@ const serviceGroups = [
       {
         name: 'MVP / Simple App',
         blurb: 'Single core feature, basic UI',
-        price: 'R15,000 - R35,000'
+        price: 'R15,000 – R35,000'
       },
       {
         name: 'Standard Mobile/Web App',
@@ -74,7 +67,7 @@ const serviceGroups = [
       {
         name: 'Implementation Project',
         blurb: 'Scoped, end-to-end solution',
-        price: 'R12,000 - R60,000+'
+        price: 'R12,000 – R60,000+'
       }
     ]
   }
@@ -83,10 +76,8 @@ const serviceGroups = [
 /**
  * Service tiers.
  *
- * `slug` is the stable value used by the
- * contact form <select> and the
- * ?tier= query parameter. Never change a
- * slug once it is live – change
+ * `slug` is the stable value used by the contact form <select> and the
+ * ?tier= query parameter. Never change a slug once it is live — change
  * `optionLabel` instead.
  */
 const tiers = [
@@ -150,7 +141,7 @@ const process = [
   {
     step: '2',
     title: 'Get a clear quote',
-    body: 'You\'ll get a straightforward price and timeline before any work begins—no surprises.'
+    body: "You'll get a straightforward price and timeline before any work begins—no surprises."
   },
   {
     step: '3',
@@ -164,35 +155,7 @@ const process = [
   }
 ];
 
-/**
- * Portfolio demos.
- *
- * TODO(nolundi): TWO problems with the
- * `url` values below.
- *
- * 1. They are hashed Vercel *deployment*
- * previews (note the -f0ssd96he-
- *    build hash) and break on every
- * redeploy.
- *
- * 2. More urgently: all three are behind
- * Vercel Deployment Protection.
- *    Checked August 2026 – each one
- * redirects to vercel.com/login, so a
- *    visitor clicking "Launch Live
- * Preview" is asked to sign in to Vercel.
- *    Fix in each project: Settings >
- * Deployment Protection > set Vercel
- *    Authentication to Disabled (or
- * Standard Protection, which leaves
- *    production public and only guards
- * previews).
- *
- * `preview` is a placeholder graphic
- * until real screenshots exist – which
- * cannot be captured while the demos are
- * behind the login wall.
- */
+/** Portfolio demos. */
 const portfolio = [
   {
     id: 'plumbing',
@@ -203,8 +166,8 @@ const portfolio = [
       'Built for quick service dispatching, customer reviews, and urgent lead capture.',
     url: 'https://local-plumbing-landing-page.vercel.app/',
     urlIsStable: false,
-    preview: '/img/preview-plumbing.svg',
-    previewIsPlaceholder: true
+    preview: '/img/preview-plumbing.png',
+    previewIsPlaceholder: false
   },
   {
     id: 'salon',
@@ -215,8 +178,8 @@ const portfolio = [
       'Luxury visual design, service price menus, and easy online appointment booking.',
     url: 'https://salon-landing-page-demo.vercel.app/',
     urlIsStable: false,
-    preview: '/img/preview-salon.svg',
-    previewIsPlaceholder: true
+    preview: '/img/preview-salon.png',
+    previewIsPlaceholder: false
   },
   {
     id: 'corporate',
@@ -227,13 +190,12 @@ const portfolio = [
       'Multi-page corporate site with consultation contact forms and structured services.',
     url: 'https://corporate-consultancy-demo.vercel.app/',
     urlIsStable: false,
-    preview: '/img/preview-corporate.svg',
-    previewIsPlaceholder: true
+    preview: '/img/preview-corporate.png',
+    previewIsPlaceholder: false
   }
 ];
 
-/** Look up a tier by its stable slug.
-Returns undefined if not found. */
+/** Look up a tier by its stable slug. Returns undefined if not found. */
 function findTier(slug) {
   return tiers.find((t) => t.slug === slug);
 }
